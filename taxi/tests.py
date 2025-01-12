@@ -21,7 +21,8 @@ class DriverSearchTest(TestCase):
                                              license_number="67890")
 
     def test_search_driver_by_username(self):
-        response = self.client.get(reverse("taxi:driver-list"), {"username": "john"})
+        response = self.client.get(reverse(
+            "taxi:driver-list"), {"username": "john"})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "john_doe")
         self.assertNotContains(response, "jane_smith")
